@@ -2,7 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mygebeya/screens/home/home.dart';
+import 'screens/login/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +57,7 @@ class Splash extends StatelessWidget {
         splashIconSize: 250,
         duration: 3200,
         backgroundColor: Colors.blue,
-        nextScreen: const Home(),
+        nextScreen: const Login(),
       ),
     );
   }
