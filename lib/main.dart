@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           useMaterial3: true,
         ),
         home: Splash());
@@ -31,7 +31,7 @@ class Splash extends StatelessWidget {
     return Scaffold(
       body: AnimatedSplashScreen(
         splash: Container(
-          color: Colors.blue, // Set the background color
+          color: Colors.blue,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -40,16 +40,16 @@ class Splash extends StatelessWidget {
                   child: Lottie.asset(
                     'assets/animations/shop.json',
                     height: 250,
-                    // Adjust height as needed
                   ),
                 ),
-                const SizedBox(
-                    height: 20), // Add space between Lottie animation and text
-                Text('My Gebeya',
-                    style: GoogleFonts.jacquesFrancois(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
+                const SizedBox(height: 20),
+                Text(
+                  'My Gebeya',
+                  style: GoogleFonts.jacquesFrancois(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
               ],
             ),
           ),
