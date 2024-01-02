@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mygebeya/screens/login/login.dart';
 
 class Signup extends StatefulWidget {
@@ -12,6 +14,16 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final String google = 'assets/icons/google.svg';
   final String facebook = 'assets/icons/facebook.svg';
+  bool isLoading = false;
+  final userNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +55,9 @@ class _SignupState extends State<Signup> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: userNameController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -62,8 +75,9 @@ class _SignupState extends State<Signup> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -81,8 +95,9 @@ class _SignupState extends State<Signup> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: passwordController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -109,13 +124,34 @@ class _SignupState extends State<Signup> {
                       shadowColor: Colors.blue,
                       padding: const EdgeInsets.all(10),
                     ),
-                    onPressed: () {},
-                    child: const Text(
-                      "SIGNUP",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
+                    onPressed: () {
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      )
+                          .then((value) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Login(),
+                          ),
+                        );
+                      }).onError((error, stackTrace) {
+                        Fluttertoast.showToast(
+                          msg: error.toString(),
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0,
+                        );
+                      });
+                    },
+                    child: isLoading
+                        ? const CircularProgressIndicator()
+                        : const Text("SIGN UP"),
                   ),
                   const SizedBox(
                     height: 30,
