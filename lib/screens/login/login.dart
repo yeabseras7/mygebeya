@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mygebeya/screens/forgotPassword/forgotPassword.dart';
 import 'package:mygebeya/screens/signup/signup.dart';
 
 class Login extends StatefulWidget {
@@ -83,7 +84,14 @@ class _LoginState extends State<Login> {
                     style: TextStyle(),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgotPassword(),
+                        ),
+                      );
+                    },
                     style: ButtonStyle(
                       foregroundColor: MaterialStateProperty.all(Colors.blue),
                     ),
