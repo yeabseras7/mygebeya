@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mygebeya/screens/signup/signup.dart';
+import 'package:mygebeya/screens/login/login.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   final String google = 'assets/icons/google.svg';
   final String facebook = 'assets/icons/facebook.svg';
   @override
@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Login",
+                "Sign up",
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
@@ -36,6 +36,25 @@ class _LoginState extends State<Login> {
               ),
               const SizedBox(
                 height: 50,
+              ),
+              const Text(
+                "Name",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const TextField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Color.fromARGB(132, 181, 215, 243),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                  hintText: "Enter your name",
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Text(
                 "Email",
@@ -76,24 +95,6 @@ class _LoginState extends State<Login> {
               const SizedBox(
                 height: 40,
               ),
-              Row(
-                children: [
-                  const Text(
-                    "Forgot your password?",
-                    style: TextStyle(),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all(Colors.blue),
-                    ),
-                    child: const Text(
-                      "Reset Password",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  )
-                ],
-              ),
               const SizedBox(
                 height: 25,
               ),
@@ -110,7 +111,7 @@ class _LoginState extends State<Login> {
                     ),
                     onPressed: () {},
                     child: const Text(
-                      "LOGIN",
+                      "SIGNUP",
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -123,7 +124,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don't have an account?",
+                        "Already have an account?",
                         style: TextStyle(),
                       ),
                       TextButton(
@@ -131,7 +132,7 @@ class _LoginState extends State<Login> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Signup(),
+                              builder: (context) => const Login(),
                             ),
                           );
                         },
@@ -140,7 +141,7 @@ class _LoginState extends State<Login> {
                               MaterialStateProperty.all(Colors.blue),
                         ),
                         child: const Text(
-                          "Sign Up",
+                          "Login",
                           style: TextStyle(color: Colors.blue),
                         ),
                       )
@@ -150,7 +151,7 @@ class _LoginState extends State<Login> {
                     height: 100,
                   ),
                   const Text(
-                    "Or login with social account",
+                    "Or signup with social account",
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
