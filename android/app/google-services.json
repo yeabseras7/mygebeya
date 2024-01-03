@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1074372818466",
+    "project_id": "mygebeya-cffef",
+    "storage_bucket": "mygebeya-cffef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074372818466:android:1170e851b1d5f7dd253c7b",
+        "android_client_info": {
+          "package_name": "com.example.mygebeya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEyRu8zbHDfSazEOPERm4zgwU5o3Y9eo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

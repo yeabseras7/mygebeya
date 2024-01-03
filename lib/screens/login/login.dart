@@ -1,6 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mygebeya/screens/forgotPassword/forgotPassword.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mygebeya/screens/home/home.dart';
+
 import 'package:mygebeya/screens/signup/signup.dart';
 
 class Login extends StatefulWidget {
@@ -13,6 +18,18 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final String google = 'assets/icons/google.svg';
   final String facebook = 'assets/icons/facebook.svg';
+
+  bool passwordVisible = false;
+  bool isLoading = false;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    passwordVisible = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +61,9 @@ class _LoginState extends State<Login> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -63,8 +81,9 @@ class _LoginState extends State<Login> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: passwordController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -108,22 +127,52 @@ class _LoginState extends State<Login> {
               Column(
                 children: [
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      minimumSize: const Size(double.infinity, 50),
-                      shape: const ContinuousRectangleBorder(),
-                      elevation: 10,
-                      shadowColor: Colors.blue,
-                      padding: const EdgeInsets.all(10),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "LOGIN",
-                      style: TextStyle(
-                        color: Colors.white,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        minimumSize: const Size(double.infinity, 50),
+                        shape: const ContinuousRectangleBorder(),
+                        elevation: 10,
+                        shadowColor: Colors.blue,
+                        padding: const EdgeInsets.all(10),
                       ),
-                    ),
-                  ),
+                      onPressed: () {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                                email: emailController.text,
+                                password: passwordController.text)
+                            .then((value) {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Home(),
+                            ),
+                          );
+                        }).onError((error, stackTrace) {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Fluttertoast.showToast(
+                            msg: error.toString(),
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0,
+                          );
+                        });
+                      },
+                      child: isLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text("LOGIN")),
                   const SizedBox(
                     height: 30,
                   ),
