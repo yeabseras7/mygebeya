@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mygebeya/screens/home/home.dart';
-
+import 'package:mygebeya/screens/forgotPassword/forgotPassword.dart';
 import 'package:mygebeya/screens/signup/signup.dart';
 
 class Login extends StatefulWidget {
