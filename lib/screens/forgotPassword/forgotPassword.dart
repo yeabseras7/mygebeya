@@ -1,4 +1,8 @@
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mygebeya/screens/login/login.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -8,6 +12,15 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  final emailController = TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,8 +59,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const TextField(
-                decoration: InputDecoration(
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(132, 181, 215, 243),
                   border: OutlineInputBorder(
@@ -55,6 +69,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ),
                   hintText: "Enter your email",
                 ),
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                validator: (email) =>
+                    email != null && !EmailValidator.validate(email)
+                        ? 'Enter a valid email'
+                        : null,
               ),
               const SizedBox(
                 height: 80,
@@ -70,7 +89,39 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       shadowColor: Colors.blue,
                       padding: const EdgeInsets.all(10),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      FirebaseAuth.instance
+                          .sendPasswordResetEmail(
+                        email: emailController.text,
+                      )
+                          .then((value) {
+                        setState(() {
+                          isLoading = false;
+                        });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const Login(),
+                          ),
+                        );
+                      }).onError((error, stackTrace) {
+                        setState(() {
+                          isLoading = false;
+                        });
+                        Fluttertoast.showToast(
+                          msg: error.toString(),
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0,
+                        );
+                      });
+                    },
                     child: const Text(
                       "SEND",
                       style: TextStyle(
@@ -89,4 +140,36 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ),
     );
   }
+
+  // Future resetPassword() async {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) => Center(
+  //       child: CircularProgressIndicator(),
+  //     ),
+  //   );
+  //   try {
+  //     await FirebaseAuth.instance
+  //         .sendPasswordResetEmail(email: emailController.text.trim());
+
+  //     final snackBar = const SnackBar(
+  //       content: Text('Password reset link sent! Check your email'),
+  //     );
+
+  //     // Navigate to a new screen after sending the reset link
+  //     Navigator.pushReplacement(
+  //       context,
+  //       MaterialPageRoute(builder: (context) => Login()),
+  //     );
+
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //   } catch (e) {
+  //     // Handle error
+  //     print('Error: $e');
+  //     final snackBar = const SnackBar(
+  //       content: Text('Error sending reset link'),
+  //     );
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //   }
+  // }
 }
