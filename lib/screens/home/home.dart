@@ -8,12 +8,185 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-        backgroundColor: Colors.amber,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                alignment: Alignment.bottomRight,
+                children: [
+                  Container(
+                    child: Image(
+                      image: AssetImage(
+                        'assets/images/bg1.png',
+                      ),
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Text(
+                      'New collection',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: 423,
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          height: 211.5,
+                          color: Colors.white,
+                          width: MediaQuery.of(context).size.width / 2,
+                          child: Center(
+                            child: Text(
+                              'Summer \nsale',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Image(
+                              image: AssetImage(
+                                'assets/images/black1.png',
+                              ),
+                              height: 211.5,
+                              width: MediaQuery.of(context).size.width / 2,
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              'Black',
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage(
+                            "assets/images/hoodieman.png",
+                          ),
+                          width: MediaQuery.of(context).size.width / 2,
+                          fit: BoxFit.cover,
+                        ),
+                        Text(
+                          'Men\'s \nhoodies',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        elevation: 0,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.white,
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.blue,
+              size: 30,
+            ),
+            icon: Icon(
+              Icons.home_outlined,
+              size: 30,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.shopping_cart,
+              color: Colors.blue,
+              size: 30,
+            ),
+            icon: Icon(
+              Icons.shopping_cart_outlined,
+              size: 30,
+            ),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.shopping_bag,
+              color: Colors.blue,
+              size: 30,
+            ),
+            icon: Icon(
+              Icons.shopping_bag_outlined,
+              size: 30,
+            ),
+            label: 'Bag',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.favorite,
+              color: Colors.blue,
+              size: 30,
+            ),
+            icon: Icon(
+              Icons.favorite_border,
+              size: 30,
+            ),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(
+              Icons.account_circle,
+              color: Colors.blue,
+              size: 30,
+            ),
+            icon: Icon(
+              Icons.account_circle_outlined,
+              size: 30,
+            ),
+            label: 'Profile',
+          ),
+        ],
       ),
     );
   }
