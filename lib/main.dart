@@ -64,6 +64,7 @@ class Splash extends StatelessWidget {
         duration: 3200,
         backgroundColor: Colors.blue,
         nextScreen: const AuthGate(),
+        // nextScreen: const AuthGate(),
       ),
     );
   }
