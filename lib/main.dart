@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mygebeya/auth/authGate.dart';
+import 'package:mygebeya/screens/home/home.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -63,8 +64,8 @@ class Splash extends StatelessWidget {
         splashIconSize: 250,
         duration: 3200,
         backgroundColor: Colors.blue,
+        // nextScreen: const Home(),
         nextScreen: const AuthGate(),
-        // nextScreen: const AuthGate(),
       ),
     );
   }
