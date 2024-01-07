@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mygebeya/screens/home/home2.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -25,13 +26,23 @@ class _HomeState extends State<Home> {
               Stack(
                 alignment: Alignment.bottomRight,
                 children: [
-                  Container(
-                    child: Image(
-                      image: AssetImage(
-                        'assets/images/bg1.png',
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeDetail(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      child: Image(
+                        image: AssetImage(
+                          'assets/images/bg1.png',
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
                       ),
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.fill,
                     ),
                   ),
                   Padding(
