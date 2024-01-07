@@ -36,41 +36,47 @@ class _HomeDetailState extends State<HomeDetail> {
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.all(40.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'New \ncollection',
+                    padding: const EdgeInsets.all(40.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'New \ncollection',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 50,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            minimumSize: const Size(double.infinity, 50),
+                            shape: StadiumBorder(),
+                            elevation: 10,
+                            shadowColor: Colors.blue,
+                            padding: const EdgeInsets.all(10),
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            "Check",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 50,
-                              fontWeight: FontWeight.w800,
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
-                              minimumSize: const Size(double.infinity, 50),
-                              shape: StadiumBorder(),
-                              elevation: 10,
-                              shadowColor: Colors.blue,
-                              padding: const EdgeInsets.all(10),
-                            ),
-                            onPressed: () {},
-                            child: Text(
-                              "Check",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ))
+                        ),
+                      ],
+                    ),
+                  )
                 ],
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Category",
+                style: TextStyle(fontSize: 20, color: Colors.blue),
               ),
             ],
           ),
