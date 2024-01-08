@@ -73,11 +73,11 @@ class _HomeDetailState extends State<HomeDetail> {
                   )
                 ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                "Category",
-                style: TextStyle(fontSize: 20, color: Colors.blue),
-              ),
+              // const SizedBox(height: 20),
+              // const Text(
+              //   "Category",
+              //   style: TextStyle(fontSize: 20, color: Colors.blue),
+              // ),
             ],
           ),
         ),
