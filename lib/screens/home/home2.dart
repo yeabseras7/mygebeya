@@ -3,7 +3,6 @@ import 'package:mygebeya/models/products.dart';
 
 class HomeDetail extends StatefulWidget {
   const HomeDetail({super.key});
-
   @override
   State<HomeDetail> createState() => _HomeDetailState();
 }
@@ -83,10 +82,10 @@ class _HomeDetailState extends State<HomeDetail> {
                     )
                   ],
                 ),
-                // const SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 35),
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 3),
                   child: const Text(
                     "Category",
                     textAlign: TextAlign.start,
@@ -97,7 +96,7 @@ class _HomeDetailState extends State<HomeDetail> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: GridView(
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
+                    // physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -105,7 +104,7 @@ class _HomeDetailState extends State<HomeDetail> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.black,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         // child: Image(
