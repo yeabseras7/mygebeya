@@ -82,38 +82,44 @@ class _HomeDetailState extends State<HomeDetail> {
                     )
                   ],
                 ),
-                const SizedBox(height: 20),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 3),
-                  child: const Text(
-                    "Category",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: 20, color: Colors.blue),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: GridView(
-                    shrinkWrap: true,
-                    // physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                    ),
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        // child: Image(
-                        // image: product.image[index],
-                        // ),
+                      Text(
+                        "Category",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(fontSize: 20, color: Colors.blue),
                       ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(20)),
+                      )
+                      // GridView(
+                      //   shrinkWrap: true,
+                      //   gridDelegate:
+                      //       const SliverGridDelegateWithFixedCrossAxisCount(
+                      //     crossAxisCount: 2,
+                      //   ),
+                      //   children: [
+                      //     Container(
+                      //       decoration: BoxDecoration(
+                      //         color: Colors.black,
+                      //         borderRadius: BorderRadius.circular(12),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ],
