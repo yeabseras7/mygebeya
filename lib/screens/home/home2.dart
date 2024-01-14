@@ -99,8 +99,15 @@ class _HomeDetailState extends State<HomeDetail> {
                         height: 100,
                         width: 100,
                         decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(20)),
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Text(
+                          "test text",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                       )
                       // GridView(
                       //   shrinkWrap: true,
