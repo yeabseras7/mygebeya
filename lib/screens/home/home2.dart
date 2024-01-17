@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:mygebeya/models/products.dart';
 
 class HomeDetail extends StatefulWidget {
   const HomeDetail({super.key});
