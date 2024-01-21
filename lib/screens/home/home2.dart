@@ -108,21 +108,6 @@ class _HomeDetailState extends State<HomeDetail> {
                           ),
                         ),
                       )
-                      // GridView(
-                      //   shrinkWrap: true,
-                      //   gridDelegate:
-                      //       const SliverGridDelegateWithFixedCrossAxisCount(
-                      //     crossAxisCount: 2,
-                      //   ),
-                      //   children: [
-                      //     Container(
-                      //       decoration: BoxDecoration(
-                      //         color: Colors.black,
-                      //         borderRadius: BorderRadius.circular(12),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ],
                   ),
                 ),
