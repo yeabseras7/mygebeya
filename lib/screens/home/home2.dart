@@ -9,7 +9,6 @@ class HomeDetail extends StatefulWidget {
 class _HomeDetailState extends State<HomeDetail> {
   @override
   Widget build(BuildContext context) {
-    // var image = product[0]['image'];
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -33,22 +32,20 @@ class _HomeDetailState extends State<HomeDetail> {
                 Stack(
                   alignment: Alignment.bottomLeft,
                   children: [
-                    Container(
-                      child: Image(
-                        image: AssetImage(
-                          'assets/images/bg3.png',
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 1.3,
-                        fit: BoxFit.fitWidth,
+                    Image(
+                      image: const AssetImage(
+                        'assets/images/bg3.png',
                       ),
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 1.3,
+                      fit: BoxFit.fitWidth,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(40.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'New \ncollection',
                             style: TextStyle(
                               color: Colors.white,
@@ -63,13 +60,13 @@ class _HomeDetailState extends State<HomeDetail> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,
                               minimumSize: const Size(double.infinity, 50),
-                              shape: StadiumBorder(),
+                              shape: const StadiumBorder(),
                               elevation: 10,
                               shadowColor: Colors.blue,
                               padding: const EdgeInsets.all(10),
                             ),
                             onPressed: () {},
-                            child: Text(
+                            child: const Text(
                               "Check",
                               style: TextStyle(
                                 color: Colors.white,
@@ -82,11 +79,12 @@ class _HomeDetailState extends State<HomeDetail> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Category",
                         textAlign: TextAlign.start,
                         style: TextStyle(fontSize: 20, color: Colors.blue),

@@ -31,22 +31,20 @@ class _HomeState extends State<Home> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeDetail(),
+                          builder: (context) => const HomeDetail(),
                         ),
                       );
                     },
-                    child: Container(
-                      child: Image(
-                        image: AssetImage(
-                          'assets/images/bg1.png',
-                        ),
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.fill,
+                    child: Image(
+                      image: const AssetImage(
+                        'assets/images/bg1.png',
                       ),
+                      width: MediaQuery.of(context).size.width,
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(40.0),
+                  const Padding(
+                    padding: EdgeInsets.all(40.0),
                     child: Text(
                       'New collection',
                       style: TextStyle(
@@ -58,7 +56,7 @@ class _HomeState extends State<Home> {
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 423,
                 child: Row(
                   children: [
@@ -68,7 +66,7 @@ class _HomeState extends State<Home> {
                           height: 211.5,
                           color: Colors.white,
                           width: MediaQuery.of(context).size.width / 2,
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Summer \nsale',
                               textAlign: TextAlign.start,
@@ -83,14 +81,14 @@ class _HomeState extends State<Home> {
                           alignment: Alignment.center,
                           children: [
                             Image(
-                              image: AssetImage(
+                              image: const AssetImage(
                                 'assets/images/black1.png',
                               ),
                               height: 211.5,
                               width: MediaQuery.of(context).size.width / 2,
                               fit: BoxFit.cover,
                             ),
-                            Text(
+                            const Text(
                               'Black',
                               textAlign: TextAlign.start,
                               style: TextStyle(
@@ -107,13 +105,13 @@ class _HomeState extends State<Home> {
                       alignment: Alignment.center,
                       children: [
                         Image(
-                          image: AssetImage(
+                          image: const AssetImage(
                             "assets/images/hoodieman.png",
                           ),
                           width: MediaQuery.of(context).size.width / 2,
                           fit: BoxFit.cover,
                         ),
-                        Text(
+                        const Text(
                           'Men\'s \nhoodies',
                           style: TextStyle(
                             fontSize: 30,
@@ -135,7 +133,7 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             backgroundColor: Colors.white,
             activeIcon: Icon(
