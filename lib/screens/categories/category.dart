@@ -23,7 +23,13 @@ class _CategoryState extends State<Category> {
           },
         ),
       ),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(),
+          ],
+        ),
+      ),
     );
   }
 }
