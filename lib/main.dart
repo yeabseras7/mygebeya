@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mygebeya/auth/authGate.dart';
+import 'package:mygebeya/screens/home/home.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const MyApp());
 }
 
@@ -63,7 +64,8 @@ class Splash extends StatelessWidget {
         splashIconSize: 250,
         duration: 3200,
         backgroundColor: Colors.blue,
-        nextScreen: const AuthGate(),
+        nextScreen: const Home(),
+        // nextScreen: const AuthGate(),
       ),
     );
   }
