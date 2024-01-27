@@ -23,38 +23,49 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeDetail(),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeDetail()));
+                },
+                child: ClipRRect(
+                  child: Stack(
+                    alignment: Alignment.bottomRight,
+                    children: [
+                      Image(
+                        image: const AssetImage(
+                          'assets/images/bg1.png',
                         ),
-                      );
-                    },
-                    child: Image(
-                      image: const AssetImage(
-                        'assets/images/bg1.png',
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
                       ),
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(40.0),
-                    child: Text(
-                      'New collection',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
+                      Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              const Color(0xFF343434).withOpacity(0.4),
+                              const Color.fromARGB(255, 26, 26, 26)
+                                  .withOpacity(0.1),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
+                      const Padding(
+                        padding: EdgeInsets.all(40.0),
+                        child: Text(
+                          'New collection',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
               SizedBox(
                 height: 423,
