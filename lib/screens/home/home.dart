@@ -45,8 +45,9 @@ class _HomeState extends State<Home> {
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [
-                              Color(0xFF343434).withOpacity(0.4),
-                              Color.fromARGB(255, 26, 26, 26).withOpacity(0.1),
+                              const Color(0xFF343434).withOpacity(0.4),
+                              const Color.fromARGB(255, 26, 26, 26)
+                                  .withOpacity(0.1),
                             ],
                           ),
                         ),
